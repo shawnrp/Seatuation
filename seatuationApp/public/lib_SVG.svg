@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="1024px" height="768px" viewBox="0 0 1024 768" enable-background="new 0 0 1024 768" xml:space="preserve">
+<rect id="room" x="103" y="152" fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" width="840" height="519"/>
+<rect id="entrance" x="138" y="607" fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" width="180" height="64"/>
+<rect id="table1" x="194" y="292" fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" width="124" height="186"/>
+<rect id="bookshelf_1_" x="418" y="203" fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" width="86" height="388"/>
+<rect id="bookshelf" x="557" y="203" fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" width="85" height="388"/>
+<rect id="table2" x="730" y="294" fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" width="124" height="186"/>
+<g id="table1seats">
+	<rect id="seat1_1_" x="236" y="248" fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" width="40" height="40"/>
+	<rect id="seat2_1_" x="323" y="323" fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" width="40" height="40"/>
+	<rect id="seat3_1_" x="323" y="393" fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" width="40" height="40"/>
+	<rect id="seat6_1_" x="149" y="323" fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" width="40" height="40"/>
+	<rect id="seat5_1_" x="149" y="393" fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" width="40" height="40"/>
+	<rect id="seat4_1_" x="236" y="482" fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" width="40" height="40"/>
+</g>
+<g id="table2seats">
+	<rect id="seat1" x="772" y="250" fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" width="40" height="40"/>
+	<rect id="seat2" x="859" y="326" fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" width="40" height="40"/>
+	<rect id="seat3" x="859" y="396" fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" width="40" height="40"/>
+	<rect id="seat6" x="685" y="325" fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" width="40" height="40"/>
+	<rect id="seat5" x="685" y="395" fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" width="40" height="40"/>
+	<rect id="seat4" x="772" y="486" fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" width="40" height="40"/>
+</g>
+</svg>

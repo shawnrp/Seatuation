@@ -12,7 +12,8 @@ class App extends Component {
 
 		this.state = {
 			lib: [],
-			showComponent: false
+			showLibName: false,
+			showMap: false
 		}
 
 		this.handleClick = this.handleClick.bind(this)
@@ -21,8 +22,9 @@ class App extends Component {
 	handleClick(lib){
 		this.setState ({
 			lib: lib,
-			showComponent: true
+			showLibName: true,
 		})
+		ReactDOM.unmountComponentAtNode(document.getElementById('display'));
 	}
 
 	renderLibraryButtons(){
@@ -47,7 +49,7 @@ class App extends Component {
 			<div className="container">
 				<h2 className="selLib">Select a library below</h2>
 				{this.renderLibraryButtons()}
-				{this.state.showComponent ? 
+				{this.state.showLibName ? 
 					<Library lib={this.state.lib}/> : ''
 				}
 			</div>

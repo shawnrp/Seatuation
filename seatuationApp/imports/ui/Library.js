@@ -5,6 +5,9 @@ import { withTracker } from 'meteor/react-meteor-data';
 import { Libs } from '../api/libs.js';
 import Floor from './Floor.js';
 import './Library.css';
+import Anychart from 'anychart';
+import ChineseF1 from './Chinese/ChineseF1.js';
+import ChineseF2 from './Chinese/ChineseF2.js';
 
 export default class Library extends Component {
 	constructor(props){
@@ -34,6 +37,12 @@ export default class Library extends Component {
 		})
 	}
 
+	componentWillReceiveProps(nextProps){ //to hide the seatMap when you click another library button 
+		this.setState({
+			showComponent: false
+		})
+	}
+
 	componentDidMount() {
     	const element = document.getElementById('libTitle');
     	element.scrollIntoView({behavior: 'smooth'});
@@ -47,13 +56,17 @@ export default class Library extends Component {
 	render(){
 		return ReactDOM.createPortal(
 			<div className="container">
-				<h1 className="child libName">{this.props.lib.name}</h1>
-				<div className="child">
-					{this.renderFloorButtons()}
-					{this.state.showComponent ?
-						<Floor floor={this.state.floor} name={this.props.lib.name + this.state.floor.name}/> : ''
-					}
-				</div>
+				<div>
+					<h1 className="child libName">{this.props.lib.name}</h1>
+					<div className="child">
+						{this.renderFloorButtons()}
+					</div>
+				</div> 
+				{this.state.showComponent ?
+					(this.props.lib.name=="Chinese Library" && this.state.floor.name=="floor 1" && <ChineseF1 floor={this.state.floor}/>)
+					|| (this.props.lib.name=="Chinese Library" && this.state.floor.name=="floor 2" && <ChineseF2 floor={this.state.floor}/>)
+					: ''
+				}
 			</div>,  document.getElementById('libTitle')
  		);
 	}
