@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { Meteor } from 'meteor/meteor';
-import { withTracker } from 'meteor/react-meteor-data';
 import { Libs } from '../api/libs.js';
-import Floor from './Floor.js';
-import './Library.css';
-import Anychart from 'anychart';
+import './css/Library.css';
 import ChineseF1 from './Chinese/ChineseF1.js';
 import ChineseF2 from './Chinese/ChineseF2.js';
+import Sidebar from './Sidebar.js';
 
 export default class Library extends Component {
 	constructor(props){
@@ -31,7 +29,7 @@ export default class Library extends Component {
 		var floors = this.props.lib.floors;
 		return floors.map((floor) => {
 			return (
-					<button className="floorBtn btn btn-default" key={name + floor.name} 
+					<button className="floorBtn btn btn-primary" key={name + floor.name} 
 					onClick ={() => this.handleClick(floor)}>{floor.name}</button>			
 			);
 		})
@@ -43,15 +41,14 @@ export default class Library extends Component {
 		})
 	}
 
-	componentDidMount() {
-    	const element = document.getElementById('libTitle');
-    	element.scrollIntoView({behavior: 'smooth'});
-  	}
+	renderFirstFloor(){
+		switch(this.props.lib.name){
+			case "Chinese Library":
+				return <ChineseF1 floor={this.props.lib.floors[0]}/>;
+				break;
+		}
+	}
 
-  	componentDidUpdate() {
-    	const element = document.getElementById('libTitle');
-    	element.scrollIntoView({behaviour: 'smooth'});
-  	}
 
 	render(){
 		return ReactDOM.createPortal(
@@ -62,11 +59,17 @@ export default class Library extends Component {
 						{this.renderFloorButtons()}
 					</div>
 				</div> 
+
+				{this.state.showComponent? '': this.renderFirstFloor() /*show first floor always*/}
+
 				{this.state.showComponent ?
 					(this.props.lib.name=="Chinese Library" && this.state.floor.name=="floor 1" && <ChineseF1 floor={this.state.floor}/>)
 					|| (this.props.lib.name=="Chinese Library" && this.state.floor.name=="floor 2" && <ChineseF2 floor={this.state.floor}/>)
 					: ''
 				}
+
+				<Sidebar lib={this.props.lib}/>
+				
 			</div>,  document.getElementById('libTitle')
  		);
 	}

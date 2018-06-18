@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom'
+import ReactDOM from 'react-dom';
 import { Meteor } from 'meteor/meteor';
-import Seat from '../Seat.js'
-import uniqid from 'uniqid'
+import Seat from '../Seat.js';
+import uniqid from 'uniqid';
 
 export default class ChineseF1 extends Component{
 	constructor(props){
@@ -16,41 +16,50 @@ export default class ChineseF1 extends Component{
 		for (var i = 0; i < tables.length; i++){ //loop through the tables on the floor
 			var seatsArr = tables[i].seats; //seats at each table 
 			seatsArr.map((seat) => { //for each seat, generate seat component
-				arr.push(<Seat key={uniqid()} cx={seat.x} cy={seat.y} filled={seat.status}/>) //x and y values to be generated via svg first, then stored in database
+				arr.push(<Seat key={uniqid()} cx={seat.x} cy={seat.y} seatStatus={seat.status}/>) //x and y values to be generated via svg first, then stored in database
 			})
 		};
 		return arr.map((x) => {return x});		
 	}
 	
 	componentDidMount() {
-    	const element = document.getElementById('scrollHere');
-    	element.scrollIntoView({behavior: 'smooth'});
-    }
-
-  	componentDidUpdate() {
     	const element = document.getElementById('display');
     	element.scrollIntoView({behavior: 'smooth'});
   	}
 
+  	componentDidUpdate() {
+    	const element = document.getElementById('display');
+    	element.scrollIntoView({behaviour: 'smooth'});
+    }
+
   	//convert SVG to JSX then insert below 
-	render(){
-		return ReactDOM.createPortal(
-			<svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" width="1024" height="768"
-			viewBox="0 0 1024 768">
-				<rect id="room" x="103" y="152" fill="#FFF" stroke="#000" strokeMiterlimit="10"
-			width="840" height="519" />
-				<rect id="entrance" x="138" y="607" fill="#FFF" stroke="#000" strokeMiterlimit="10"
-			width="180" height="64" />
-				<rect id="table1" x="194" y="292" fill="#FFF" stroke="#000" strokeMiterlimit="10"
-			width="124" height="186" />
-				<rect id="bookshelf_1_" x="418" y="203" fill="#FFF" stroke="#000" strokeMiterlimit="10"
-			width="86" height="388" />
-				<rect id="bookshelf" x="557" y="203" fill="#FFF" stroke="#000" strokeMiterlimit="10"
-			width="85" height="388" />
-				<rect id="table2" x="730" y="294" fill="#FFF" stroke="#000" strokeMiterlimit="10"
-			width="124" height="186" />
-				{this.renderSeats()}
-			</svg>, document.getElementById('display')
-		)
-	}
-}
+  	render(){
+  		return ReactDOM.createPortal(
+  			<svg id='Layer_1' xmlns='http://www.w3.org/2000/svg'
+  			viewBox='0 0 840 519'>
+	  			<g>
+		  			<rect id='room' fill='#FFF' stroke='#000' strokeMiterlimit='10' width='840'
+		  			height='519' />
+	  				<text x='10' y='20' className='heavy' fill="black">{this.props.floor.name}</text>
+	  			</g>
+	  			<rect id='entrance' x='35' y='455' fill='#FFF' stroke='#000' strokeMiterlimit='10'
+	  			width='180' height='64' />
+	  			<g>
+		  			<rect id='table1' x='91' y='140' fill='#FFF' stroke='#000' strokeMiterlimit='10'
+		  			width='124' height='186' />
+		  			<text x='130' y='230' fill="black" className="heavy">Table 1</text>
+		  		</g>
+	  			<rect id='bookshelf_1_' x='315' y='51' fill='#FFF' stroke='#000' strokeMiterlimit='10'
+	  			width='86' height='388' />
+	  			<rect id='bookshelf' x='454' y='51' fill='#FFF' stroke='#000' strokeMiterlimit='10'
+	  			width='85' height='388' />
+	  			<g>
+		  			<rect id='table2' x='627' y='142' fill='#FFF' stroke='#000' strokeMiterlimit='10'
+		  			width='124' height='186' />
+		  			<text x='666' y='230' fill="black" className="heavy">Table 2</text>
+		  		</g>
+  				{this.renderSeats()}
+  			</svg>, document.getElementById('display')
+  			)
+  	}
+  }

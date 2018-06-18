@@ -8,16 +8,16 @@ export default class Seat extends Component{
 	}
 
 	checkValidity(){
-		if (this.props.cx > 0 && this.props.cy > 0){
-			return true; 
-		}
+		return (this.props.cx > 0 && this.props.cy > 0 && 
+			(this.props.seatStatus == "empty" || this.props.seatStatus == "filled"))
 	}
 
+	//return small rectangle, green if empty, red if filled
 	render(){
 		if (this.checkValidity()){
 			return(	
 				<rect x={this.props.cx} y={this.props.cy} width="40" height="40" 
-				fill={(this.props.filled == "empty")? "#008000": "#FF0000"} stroke="#000" strokeMiterlimit="10"/>
+				fill={(this.props.seatStatus == "empty")? "#008000": "#FF0000"} stroke="#000" strokeMiterlimit="10"/>
 			);
 		} else {
 			return null;

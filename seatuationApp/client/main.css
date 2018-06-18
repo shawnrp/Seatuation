@@ -2,7 +2,6 @@
 	text-align:center;
 	border-style: solid;
 	border-color: black;
-	
 }
 
 body {
@@ -11,5 +10,6 @@ body {
 	background-attachment: fixed;
 	background-size: cover;
 	background-position: center;
+	overflow-y: scroll;
 }
 

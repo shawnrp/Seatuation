@@ -4,38 +4,37 @@ import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import { Libs } from '../api/libs.js';
 import Library from './Library.js';
-import './App.css';
+import './css/App.css';
 
 class App extends Component {
 	constructor(props){
 		super(props)
 
 		this.state = {
-			lib: [],
+			lib: {}, 
 			showLibName: false,
-			showMap: false
-		}
+		} 
 
 		this.handleClick = this.handleClick.bind(this)
 	}
 
-	handleClick(lib){
+	handleClick(lib){ //set lib to be the library document with name, floors, tables etc. 
 		this.setState ({
 			lib: lib,
 			showLibName: true,
 		})
-		ReactDOM.unmountComponentAtNode(document.getElementById('display'));
+		const element = document.getElementById('libTitle');
+    	element.scrollIntoView({behaviour: 'smooth'});
 	}
 
+
+	//render the 8 library buttons
 	renderLibraryButtons(){
-		var libs = this.props.libs; //array of documents
+		var libs = this.props.libs; //array of library documents
 		return libs.map((lib) => {
 			return (
 				<div key={lib.name} className="libContainer col-xs-3" 
-				onClick={() => {
-					this.handleClick(lib);	
-				}
-				}>
+				onClick={() => {this.handleClick(lib)}}>
 					<img className="libImage" src="http://library.yale-nus.edu.sg/wp-content/uploads/2015/10/69A6635.jpg" 
 					alt="Lib"/>
 					<div className="centered">{lib.name}</div>
