@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { Meteor } from 'meteor/meteor';
 import uniqid from 'uniqid';
 import './css/Sidebar.css';
+import checkTable from '../api/SeatAlgorithm.js';
 
 export default class Sidebar extends Component{
 	constructor(props){
@@ -12,8 +13,30 @@ export default class Sidebar extends Component{
 
 
 	handleSubmit(){
-		alert(ReactDOM.findDOMNode(this.refs.dropdown).value);
-		alert(ReactDOM.findDOMNode(this.refs.adjacent).checked);
+		var numSeats = ReactDOM.findDOMNode(this.refs.dropdown).value
+		var reqAdjacent = ReactDOM.findDOMNode(this.refs.adjacent).checked
+		var floorsArr = this.props.lib.floors;
+		var validTables = [];
+		for (var i = 0; i < floorsArr.length; i++){ //loop through floors
+			var floor = floorsArr[i];
+			var tablesArr = floor.tables;
+			for (var j = 0; j < tablesArr.length; j++){ //loop through tables on each floor
+				if (numSeats > tablesArr[j].numEmpty) continue; //seats required is more than number of empty seats
+				var tableName = tablesArr[j].name;
+				var seatArr = tablesArr[j].seatsArr; //array of seats per table
+				if (seatArr == undefined) break;
+				if (reqAdjacent){
+					if (checkTable(seatArr, numSeats)){ //check for adjacent seats on each table 
+						validTables.push(floor.name + " " + tableName)
+					}
+				} else { //just check that the number of empty seats can accommodate number of seats required
+					if (tablesArr[j].numEmpty >= numSeats){
+						validTables.push(floor.name + " " + tableName)
+					}
+				}
+			}
+		}
+		console.log(validTables);
 	}
 
 	render(){
@@ -40,7 +63,7 @@ export default class Sidebar extends Component{
 					<label><input type="checkbox" ref="adjacent"/>Check if you need adjacent seats</label>
 					<div className="input-group">
 						<select className="form-control" ref="dropdown">
-							<option value="" selected disabled hidden>Please select</option>
+							<option value="" disabled hidden>Please select</option>
 							<option value="2">2</option>
 							<option value="3">3</option>
 							<option value="4">4</option>
