@@ -11,7 +11,7 @@ export default class Library extends Component {
 	constructor(props){
 		super(props);
 
-		this.state ={
+		this.state = {
 			floor: {},
 			showComponent: false
 		}
@@ -29,8 +29,9 @@ export default class Library extends Component {
 		var floors = this.props.lib.floors;
 		return floors.map((floor) => {
 			return (
-					<button className="floorBtn btn btn-primary" key={name + floor.name} 
-					onClick ={() => this.handleClick(floor)}>{floor.name}</button>			
+					<li key={name + floor.name}>
+					<a className="floorBtns" onClick={() => this.handleClick(floor)}>{floor.name}</a>
+					</li>			
 			);
 		})
 	}
@@ -53,12 +54,14 @@ export default class Library extends Component {
 	render(){
 		return ReactDOM.createPortal(
 			<div className="container">
-				<div>
-					<h1 className="child libName">{this.props.lib.name}</h1>
-					<div className="child">
-						{this.renderFloorButtons()}
+				<nav className = "navbar navbar-inverse">
+					<div className = "navbar-header">
+						<div className="libTitle navbar-brand">{this.props.lib.name}</div>
 					</div>
-				</div> 
+					<ul className = "nav navbar-nav">
+						{this.renderFloorButtons()}
+					</ul>
+				</nav>
 
 				{this.state.showComponent? '': this.renderFirstFloor() /*show first floor always*/}
 

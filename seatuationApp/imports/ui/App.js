@@ -23,8 +23,6 @@ class App extends Component {
 			lib: lib,
 			showLibName: true,
 		})
-		const element = document.getElementById('libTitle');
-    	element.scrollIntoView({behaviour: 'smooth'});
 	}
 
 

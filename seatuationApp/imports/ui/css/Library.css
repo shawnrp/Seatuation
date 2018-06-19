@@ -1,11 +1,21 @@
-.floorBtn {
-	margin: -17px 5px 0px 0px;
+.floorBtns{
+	cursor: pointer;
 }
 
 .libName{
 	margin-right: 10px;
+	font-size: 2vw;
 }
 
 .child{
 	display: inline-block;
+}
+
+.nowrap{
+	width: 10%;
+}
+
+.libTitle{
+	color: white !important;
+	background-color: #080808 !important;
 }

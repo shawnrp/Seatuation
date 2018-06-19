@@ -4,15 +4,21 @@ import { Meteor } from 'meteor/meteor';
 import uniqid from 'uniqid';
 import './css/Sidebar.css';
 import checkTable from '../api/SeatAlgorithm.js';
+import SearchResult from './SearchResult.js';
 
 export default class Sidebar extends Component{
 	constructor(props){
 		super(props);
-		this.handleSubmit = this.handleSubmit.bind(this)
+
+		this.state = {
+			validTables: []
+		}
+
+		this.handleSubmit = this.handleSubmit.bind(this);
 	}
 
 
-	handleSubmit(){
+	handleSubmit(){ //method to search for tables that can accomodate seats
 		var numSeats = ReactDOM.findDOMNode(this.refs.dropdown).value
 		var reqAdjacent = ReactDOM.findDOMNode(this.refs.adjacent).checked
 		var floorsArr = this.props.lib.floors;
@@ -36,12 +42,18 @@ export default class Sidebar extends Component{
 				}
 			}
 		}
+		this.renderSearchResults(validTables);
 		console.log(validTables);
+	}
+
+	renderSearchResults(validTables){
+		ReactDOM.render(<SearchResult validTables={validTables} lib={this.props.lib}/>, 
+						ReactDOM.findDOMNode(this.refs.results));
 	}
 
 	render(){
 		return ReactDOM.createPortal(
-			<div>
+			<div className="container-fluid">
 				<div className="legend box">
 
 					<h2 className="legendTitle">Legend</h2>
@@ -59,8 +71,9 @@ export default class Sidebar extends Component{
 				</div>
 
 				<div className="search box">
-					<h2> Find a table with required seats: </h2> 
-					<label><input type="checkbox" ref="adjacent"/>Check if you need adjacent seats</label>
+					<h2 className="legendTitle"> Find a table with required seats: </h2> 
+					<label><input type="checkbox" ref="adjacent"/>
+						<span className="responsiveText">Seats must be adjacent</span></label>
 					<div className="input-group">
 						<select className="form-control" ref="dropdown">
 							<option value="" disabled hidden>Please select</option>
@@ -75,8 +88,11 @@ export default class Sidebar extends Component{
 						<span className="input-group-btn">
 							<button className="btn btn-block btn-primary" onClick={this.handleSubmit}>Search</button>
 						</span>
-					</div>	
+					</div>
+					<br/>
+					<div ref="results"></div>
 				</div> 
+
 			</div>, document.getElementById('sidebar')
 		);
 	}
