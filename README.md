@@ -1,7 +1,7 @@
 # Seatuation
 NUS Orbital 2018 - Seatuation
 
-View on: http://seatuation.herokuapp.com/
+View on: http://seatuation.herokuapp.com/ (currently only Chinese Library has contents)
 
 To run manually:
 
