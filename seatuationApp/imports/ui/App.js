@@ -43,12 +43,16 @@ class App extends Component {
 
 	render(){
 		return(
-			<div className="container">
-				<h2 className="selLib">Select a library below</h2>
-				{this.renderLibraryButtons()}
-				{this.state.showLibName ? 
-					<Library lib={this.state.lib}/> : ''
-				}
+			<div>
+				<div className="container">
+					<h2 className="selLib">Select a library below</h2>
+					{this.renderLibraryButtons()}
+				</div>
+				<div id="libTitle" className="row">
+					{this.state.showLibName ? 
+						<Library lib={this.state.lib}/> : ''
+					}
+				</div>
 			</div>
 		); //pass the selected library 
 	}

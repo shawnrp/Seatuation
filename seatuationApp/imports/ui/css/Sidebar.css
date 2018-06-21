@@ -3,6 +3,9 @@
 	width: 20px;
 	background-color: red;
 	margin-right: 5px;
+	border: 1px;
+	border-style: solid;
+	border-color: black;
 }
 
 .empty{
@@ -10,9 +13,22 @@
 	width: 20px;
 	background-color: green;
 	margin-right: 5px;
+	border: 1px;
+	border-style: solid;
+	border-color: black;
 }
 
-.child{
+.tableMatch{
+	height: 20px;
+	width: 20px;
+	background-color: #fff196;
+	margin-right: 5px;
+	border: 1px;
+	border-style: solid;
+	border-color: black;
+}
+
+.inline{
 	display: inline-block;
 }
 
@@ -22,6 +38,12 @@
 	border-style: solid;
 	padding: 10px;
 	background-color: rgba(255,255,255,0.7);
+}
+
+.legendList{
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
 }
 
 .legend{
@@ -35,14 +57,9 @@
 
 .legendSub{
 	font-size: 1vw;
+	display: inline-block;
 	position: relative;
 	bottom: 5px;
-	margin-right: 15px;
-}
-
-.legendGrp{
-	margin-top: -10px;
-	display: inline-block;
 }
 
 input[type=checkbox]{

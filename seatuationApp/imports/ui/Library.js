@@ -13,14 +13,20 @@ export default class Library extends Component {
 
 		this.state = {
 			floor: {},
-			showComponent: false
+			firstLoad: true,
+			displaySearch: false,
+			searchedFloor: '',
+			searchedTable: ''
 		}
 	}
 
 	handleClick(floor){
 		this.setState({
 			floor: floor, //floor is object with 'name' and 'tables' fields
-			showComponent: true
+			firstLoad: false,
+			displaySearch: false,
+			searchedResult: '',
+			searchedTable: ''
 		})
 	}
 
@@ -30,7 +36,7 @@ export default class Library extends Component {
 		return floors.map((floor) => {
 			return (
 					<li key={name + floor.name}>
-					<a className="floorBtns" onClick={() => this.handleClick(floor)}>{floor.name}</a>
+						<a className="floorBtns" onClick={() => this.handleClick(floor)}>{floor.name}</a>
 					</li>			
 			);
 		})
@@ -38,22 +44,32 @@ export default class Library extends Component {
 
 	componentWillReceiveProps(nextProps){ //to hide the seatMap when you click another library button 
 		this.setState({
-			showComponent: false
+			firstLoad: true
 		})
 	}
 
-	renderFirstFloor(){
+	renderFirstFloor(){ //for each library add a case to return its first floor
 		switch(this.props.lib.name){
 			case "Chinese Library":
-				return <ChineseF1 floor={this.props.lib.floors[0]}/>;
+				return <ChineseF1 floor={this.props.lib.floors[0]} validTable=''/>;
 				break;
 		}
 	}
 
+	processSearchResults(result){ //pass this methods down to searchResults component
+		var splitResult = result.split(' - ');
+		var searchedFloor = splitResult[0];
+		var searchedTable = splitResult[1];
+		this.setState({
+			displaySearch: true,
+			searchedFloor: searchedFloor,
+			searchedTable: searchedTable
+		});
+	}
 
 	render(){
-		return ReactDOM.createPortal(
-			<div className="container">
+		return(
+			<div className="mainLayout container">
 				<nav className = "navbar navbar-inverse">
 					<div className = "navbar-header">
 						<div className="libTitle navbar-brand">{this.props.lib.name}</div>
@@ -63,17 +79,32 @@ export default class Library extends Component {
 					</ul>
 				</nav>
 
-				{this.state.showComponent? '': this.renderFirstFloor() /*show first floor always*/}
+				<div className="row">
+					<div id="display" className="col-xs-8"> 
+						{/*if first time load AND not displaying search results*/}
+						{(this.state.firstLoad && !this.state.displaySearch)? this.renderFirstFloor() : ''/*show first floor always on first load*/}
 
-				{this.state.showComponent ?
-					(this.props.lib.name=="Chinese Library" && this.state.floor.name=="floor 1" && <ChineseF1 floor={this.state.floor}/>)
-					|| (this.props.lib.name=="Chinese Library" && this.state.floor.name=="floor 2" && <ChineseF2 floor={this.state.floor}/>)
-					: ''
-				}
+						{/*if not first time load AND not displaying search results i.e. clicked floor button*/}
+						{(!this.state.displaySearch && !this.state.firstLoad)?
+							(this.props.lib.name=="Chinese Library" && this.state.floor.name=="floor 1" && <ChineseF1 floor={this.state.floor} validTable=''/>)
+							|| (this.props.lib.name=="Chinese Library" && this.state.floor.name=="floor 2" && <ChineseF2 floor={this.state.floor} ValidTable=''/>)
+							: ''
+						}
 
-				<Sidebar lib={this.props.lib}/>
+						{/* displaying search results */}
+						{this.state.displaySearch ?
+							(this.props.lib.name=="Chinese Library" && this.state.searchedFloor=="floor 1" && <ChineseF1 floor={this.props.lib.floors[0]} validTable={this.state.searchedTable}/>)
+							|| (this.props.lib.name=="Chinese Library" && this.state.searchedFloor=="floor 2" && <ChineseF2 floor={this.props.lib.floors[1]} validTable={this.state.searchedTable}/>)
+							: ''
+						}
+
+					</div>
+					<div id="sidebar" className="sidebar col-xs-4">
+						<Sidebar lib={this.props.lib} onSearch={this.processSearchResults.bind(this)}/>
+					</div>
+				</div>
 				
-			</div>,  document.getElementById('libTitle')
+			</div>
  		);
 	}
 }

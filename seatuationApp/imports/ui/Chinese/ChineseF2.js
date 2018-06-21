@@ -34,26 +34,32 @@ export default class ChineseF1 extends Component{
 
   	//convert SVG to JSX then insert below 
 	render(){
-		return ReactDOM.createPortal(
-			<svg id='Layer_1' xmlns='http://www.w3.org/2000/svg' 
+		return(
+			<svg id='Layer_1' xmlns='http://www.w3.org/2000/svg'
   			viewBox='0 0 840 519'>
-  				<g>
+	  			<g>
 		  			<rect id='room' fill='#FFF' stroke='#000' strokeMiterlimit='10' width='840'
 		  			height='519' />
-		  			<text x='10' y='20' className='heavy' fill="black">{this.props.floor.name}</text>
+	  				<text x='10' y='20' className='heavy' fill="black">{this.props.floor.name}</text>
 	  			</g>
 	  			<rect id='entrance' x='35' y='455' fill='#FFF' stroke='#000' strokeMiterlimit='10'
 	  			width='180' height='64' />
-	  			<rect id='table1' x='91' y='140' fill='#FFF' stroke='#000' strokeMiterlimit='10'
-	  			width='124' height='186' />
+	  			<g>
+		  			<rect id='table 1' x='91' y='140' fill={this.props.validTable=='table 1'? '#fff196': '#FFF'} stroke='#000' strokeMiterlimit='10'
+		  			width='124' height='186' />
+		  			<text x='130' y='230' fill="black" className="heavy">table 1</text>
+		  		</g>
 	  			<rect id='bookshelf_1_' x='315' y='51' fill='#FFF' stroke='#000' strokeMiterlimit='10'
 	  			width='86' height='388' />
 	  			<rect id='bookshelf' x='454' y='51' fill='#FFF' stroke='#000' strokeMiterlimit='10'
 	  			width='85' height='388' />
-	  			<rect id='table2' x='627' y='142' fill='#FFF' stroke='#000' strokeMiterlimit='10'
-	  			width='124' height='186' />
-				{this.renderSeats()}
-			</svg>, document.getElementById('display')
+	  			<g>
+		  			<rect id='table 2' x='627' y='142' fill={this.props.validTable=='table 2'? '#fff196': '#FFF'} stroke='#000' strokeMiterlimit='10'
+		  			width='124' height='186' />
+		  			<text x='666' y='230' fill="black" className="heavy">table 2</text>
+		  		</g>
+  				{this.renderSeats()}
+  			</svg>
 		)
 	}
 }
