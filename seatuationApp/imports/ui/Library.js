@@ -42,21 +42,23 @@ export default class Library extends Component {
 		})
 	}
 
-	componentWillReceiveProps(nextProps){ //to hide the seatMap when you click another library button 
+	/*componentWillReceiveProps(nextProps){ //to hide the seatMap when you click another library button 
 		this.setState({
 			firstLoad: true
 		})
-	}
+	}*/
 
 	renderFirstFloor(){ //for each library add a case to return its first floor
 		switch(this.props.lib.name){
 			case "Chinese Library":
+				console.log("rendering first floor");
 				return <ChineseF1 floor={this.props.lib.floors[0]} validTable=''/>;
 				break;
 		}
+
 	}
 
-	processSearchResults(result){ //pass this methods down to searchResults component
+	processSearchResults(result){ //pass this method down to searchResults component
 		var splitResult = result.split(' - ');
 		var searchedFloor = splitResult[0];
 		var searchedTable = splitResult[1];
@@ -65,6 +67,18 @@ export default class Library extends Component {
 			searchedFloor: searchedFloor,
 			searchedTable: searchedTable
 		});
+	}
+
+	fillSeat(){
+		Meteor.call('libs.fillSeat', "Chinese Library.1.1.1", function(err){
+			if(err) alert(err);
+		})
+	}
+
+	unfillSeat(){
+		Meteor.call('libs.unfillSeat', "Chinese Library.1.1.1", function(err){
+			if(err) alert(err);
+		})
 	}
 
 	render(){
@@ -86,8 +100,8 @@ export default class Library extends Component {
 
 						{/*if not first time load AND not displaying search results i.e. clicked floor button*/}
 						{(!this.state.displaySearch && !this.state.firstLoad)?
-							(this.props.lib.name=="Chinese Library" && this.state.floor.name=="floor 1" && <ChineseF1 floor={this.state.floor} validTable=''/>)
-							|| (this.props.lib.name=="Chinese Library" && this.state.floor.name=="floor 2" && <ChineseF2 floor={this.state.floor} ValidTable=''/>)
+							(this.props.lib.name=="Chinese Library" && this.state.floor.name=="floor 1" && <ChineseF1 floor={this.props.lib.floors[0]} validTable=''/>)
+							|| (this.props.lib.name=="Chinese Library" && this.state.floor.name=="floor 2" && <ChineseF2 floor={this.props.lib.floors[1]} ValidTable=''/>)
 							: ''
 						}
 
@@ -103,7 +117,10 @@ export default class Library extends Component {
 						<Sidebar lib={this.props.lib} onSearch={this.processSearchResults.bind(this)}/>
 					</div>
 				</div>
-				
+				<div>
+					<button onClick={this.fillSeat.bind(this)}>FOR TESTING: Fill Ch Floor1 Table1 Seat1</button>
+					<button onClick={this.unfillSeat.bind(this)}>FOR TESTING: Unfill Ch Floor1 Table1 Seat1</button> 
+				</div>
 			</div>
  		);
 	}

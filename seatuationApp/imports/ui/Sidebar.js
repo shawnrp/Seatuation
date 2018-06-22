@@ -76,7 +76,7 @@ export default class Sidebar extends Component{
 					<h2 className="legendTitle"> Find a table with required seats: </h2> 
 					<label>
 						<input type="checkbox" ref="adjacent"/>
-						<span className="responsiveText">Seats must be adjacent</span>
+						<span className="responsiveText">Seats must be adjacent or opposite</span>
 					</label>
 					<div className="input-group">
 						<select className="form-control" ref="dropdown">

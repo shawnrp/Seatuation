@@ -63,3 +63,4 @@ export default class ChineseF1 extends Component{
   			)
   	}
   }
+

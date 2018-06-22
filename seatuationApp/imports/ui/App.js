@@ -11,16 +11,17 @@ class App extends Component {
 		super(props)
 
 		this.state = {
-			lib: {}, 
+			libName: '', 
 			showLibName: false,
 		} 
 
 		this.handleClick = this.handleClick.bind(this)
+		this.getCorrectLibrary = this.getCorrectLibrary.bind(this)
 	}
 
 	handleClick(lib){ //set lib to be the library document with name, floors, tables etc. 
 		this.setState ({
-			lib: lib,
+			libName: lib.name,
 			showLibName: true,
 		})
 	}
@@ -41,6 +42,17 @@ class App extends Component {
 		})
 	}
 
+	getCorrectLibrary(){ //so that Library is rendered with data directly from subscription
+		var targetLib = this.state.libName;
+		var libs = this.props.libs;
+		for (var i = 0; i < libs.length; i++){
+			if(libs[i].name == targetLib){
+				return libs[i];
+			}
+		}
+	}
+
+
 	render(){
 		return(
 			<div>
@@ -50,9 +62,10 @@ class App extends Component {
 				</div>
 				<div id="libTitle" className="row">
 					{this.state.showLibName ? 
-						<Library lib={this.state.lib}/> : ''
+						<Library lib={this.getCorrectLibrary()}/> : ''
 					}
 				</div>
+			
 			</div>
 		); //pass the selected library 
 	}
