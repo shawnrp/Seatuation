@@ -44,7 +44,7 @@ class App extends Component {
 			return (
 				<div key={lib.name} className="libContainer col-xs-3" 
 				onClick={() => {this.handleClick(lib)}}>
-					<img className="libImage" src="http://library.yale-nus.edu.sg/wp-content/uploads/2015/10/69A6635.jpg" 
+					<img className="libImage" src="https://library.yale-nus.edu.sg/wp-content/uploads/2015/10/69A6635.jpg" 
 					alt="Lib"/>
 					<div className="centered">
 					{lib.name}
@@ -70,7 +70,6 @@ class App extends Component {
 		if(data){
 			this.setState({
 				showQR: false,
-				showLibName: true
 			});
 			this.toggleSeat(data);
 		}
