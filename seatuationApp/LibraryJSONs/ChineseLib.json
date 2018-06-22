@@ -226,5 +226,7 @@
                 }
             ]
         }
-    ]
+    ],
+    "totalCapacity": 24,
+    "empty": 16
 }

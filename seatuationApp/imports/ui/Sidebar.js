@@ -72,6 +72,7 @@ export default class Sidebar extends Component{
 					</ul>
 				</div>
 
+			{/* seat selector */}
 				<div className="search box">
 					<h2 className="legendTitle"> Find a table with required seats: </h2> 
 					<label>

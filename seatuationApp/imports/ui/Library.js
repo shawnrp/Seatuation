@@ -42,16 +42,9 @@ export default class Library extends Component {
 		})
 	}
 
-	/*componentWillReceiveProps(nextProps){ //to hide the seatMap when you click another library button 
-		this.setState({
-			firstLoad: true
-		})
-	}*/
-
 	renderFirstFloor(){ //for each library add a case to return its first floor
 		switch(this.props.lib.name){
 			case "Chinese Library":
-				console.log("rendering first floor");
 				return <ChineseF1 floor={this.props.lib.floors[0]} validTable=''/>;
 				break;
 		}
@@ -64,21 +57,9 @@ export default class Library extends Component {
 		var searchedTable = splitResult[1];
 		this.setState({
 			displaySearch: true,
-			searchedFloor: searchedFloor,
+			searchedFloor: searchedFloor, //when result is returned after search result button is clicked, set state accordingly and re-render to display correct layout
 			searchedTable: searchedTable
 		});
-	}
-
-	fillSeat(){
-		Meteor.call('libs.fillSeat', "Chinese Library.1.1.1", function(err){
-			if(err) alert(err);
-		})
-	}
-
-	unfillSeat(){
-		Meteor.call('libs.unfillSeat', "Chinese Library.1.1.1", function(err){
-			if(err) alert(err);
-		})
 	}
 
 	render(){
@@ -116,10 +97,6 @@ export default class Library extends Component {
 					<div id="sidebar" className="sidebar col-xs-4">
 						<Sidebar lib={this.props.lib} onSearch={this.processSearchResults.bind(this)}/>
 					</div>
-				</div>
-				<div>
-					<button onClick={this.fillSeat.bind(this)}>FOR TESTING: Fill Ch Floor1 Table1 Seat1</button>
-					<button onClick={this.unfillSeat.bind(this)}>FOR TESTING: Unfill Ch Floor1 Table1 Seat1</button> 
 				</div>
 			</div>
  		);

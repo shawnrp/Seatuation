@@ -27,6 +27,7 @@
     color: white;
     text-align: center;
     cursor: pointer;
+    width: 80%;
 }
 
 .selLib {
@@ -34,5 +35,19 @@
 	margin-top: 0px;
 	text-align: center;
 	font-size: 2vw;
+}
+
+.occupancy{
+	font-size: 1vw;
+}
+
+.QRbtn{
+	margin: 0 auto;
+	display: block;
+}
+
+.QRcam{
+	margin: 0 auto;
+	display: block;
 }
 
