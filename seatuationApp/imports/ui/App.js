@@ -101,14 +101,14 @@ class App extends Component {
 		return(
 			<div>
 				<div className="container">
-					<button className="btn btn-primary QRbtn" onClick={this.showQR}>Scan QR</button>
+					<button className="btn btn-primary QRbtn" onClick={this.showQR}>Help the community! Simply click to scan the QR code when you sit and once again when you leave!</button>
 					<div ref="QR">
 						{this.state.showQR?
 							<div>
 								<QrReader
 									delay={300}
 									onScan={this.handleScan}
-									style={{width: '300px'}}
+									style={{width: '350px'}}
 									onError={this.handleError}
 									className="QRcam"
 								/>

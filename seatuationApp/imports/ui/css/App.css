@@ -3,6 +3,9 @@
 	height: auto;
 	border-radius: 5%;
 	cursor:pointer;
+	border: 3px;
+	border-style: solid;
+	border-color: black;
 }
 
 .libText {
@@ -32,9 +35,10 @@
 
 .selLib {
 	margin-bottom: 15px; 
-	margin-top: 0px;
+	margin-top: 10px;
 	text-align: center;
 	font-size: 2vw;
+	color: black;
 }
 
 .occupancy{
@@ -44,6 +48,9 @@
 .QRbtn{
 	margin: 0 auto;
 	display: block;
+	border: 1px;
+	border-style: solid;
+	border-color: black;
 }
 
 .QRcam{
