@@ -131,6 +131,6 @@ class App extends Component {
 export default withTracker(() => {
 	Meteor.subscribe('libs');
 	return {
-		libs: Libs.find().fetch() //fetch return an array of objects
+		libs: Libs.find({}, {sort: {name: 1}}).fetch() //fetch return an array of objects, returned in ascending alphabetical order
 	};
 })(App);

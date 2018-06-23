@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { Meteor } from 'meteor/meteor';
-import Seat from '../Seat.js';
+import Seat from '../../Seat.js';
 import uniqid from 'uniqid';
 
-export default class ChineseF1 extends Component{
+export default class CentralF1 extends Component{
 	constructor(props){
 		super(props);
 

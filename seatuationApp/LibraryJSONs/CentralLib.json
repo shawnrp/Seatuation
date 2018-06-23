@@ -1,0 +1,232 @@
+{
+    "_id": {
+        "$oid": "5b1f9bf4fb6fc033f88266da"
+    },
+    "name": "Central Library",
+    "floors": [
+        {
+            "name": "floor 1",
+            "tables": [
+                {
+                    "name": "table 1",
+                    "seats": [
+                        {
+                            "x": 133,
+                            "y": 96,
+                            "status": "filled",
+                            "row": 1,
+                            "col": 3
+                        },
+                        {
+                            "x": 220,
+                            "y": 171,
+                            "status": "filled",
+                            "row": 2,
+                            "col": 2
+                        },
+                        {
+                            "x": 220,
+                            "y": 241,
+                            "status": "empty",
+                            "row": 2,
+                            "col": 1
+                        },
+                        {
+                            "x": 133,
+                            "y": 330,
+                            "status": "filled",
+                            "row": 1,
+                            "col": 0
+                        },
+                        {
+                            "x": 46,
+                            "y": 241,
+                            "status": "filled",
+                            "row": 0,
+                            "col": 1
+                        },
+                        {
+                            "x": 46,
+                            "y": 171,
+                            "status": "filled",
+                            "row": 0,
+                            "col": 2
+                        }
+                    ],
+                    "seatsArr": [
+                        [0, 0, 0, 0],
+                        [0, 0, 0, 0],
+                        [0, 1, 0, 0]
+                        ],
+                    "numEmpty": 1
+                },
+                {
+                    "name": "table 2",
+                    "seats": [
+                        {
+                            "x": 669,
+                            "y": 98,
+                            "status": "empty",
+                            "row": 1,
+                            "col": 3
+                        },
+                        {
+                            "x": 756,
+                            "y": 174,
+                            "status": "empty",
+                            "row": 2,
+                            "col": 2
+                        },
+                        {
+                            "x": 756,
+                            "y": 244,
+                            "status": "empty",
+                            "row": 2,
+                            "col": 1
+                        },
+                        {
+                            "x": 669,
+                            "y": 334,
+                            "status": "filled",
+                            "row": 1,
+                            "col": 0
+                        },
+                        {
+                            "x": 582,
+                            "y": 243,
+                            "status": "empty",
+                            "row": 0,
+                            "col": 1
+                        },
+                        {
+                            "x": 582,
+                            "y": 173,
+                            "status": "empty",
+                            "row": 0,
+                            "col": 2
+                        }
+                    ],
+                    "seatsArr": [
+                        [0, 1, 1, 0],
+                        [0, 0, 0, 1],
+                        [0, 1, 1, 0]
+                        ],
+                    "numEmpty": 5
+                }
+            ]
+        },
+        {
+            "name": "floor 2",
+            "tables": [
+                {
+                    "name": "table 1",
+                    "seats": [
+                        {
+                            "x": 133,
+                            "y": 96,
+                            "status": "empty",
+                            "row": 1,
+                            "col": 3
+                        },
+                        {
+                            "x": 220,
+                            "y": 171,
+                            "status": "empty",
+                            "row": 2,
+                            "col": 2
+                        },
+                        {
+                            "x": 220,
+                            "y": 241,
+                            "status": "filled",
+                            "row": 2,
+                            "col": 1
+                        },
+                        {
+                            "x": 133,
+                            "y": 330,
+                            "status": "empty",
+                            "row": 1,
+                            "col": 0
+                        },
+                        {
+                            "x": 46,
+                            "y": 241,
+                            "status": "empty",
+                            "row": 0,
+                            "col": 1
+                        },
+                        {
+                            "x": 46,
+                            "y": 171,
+                            "status": "empty",
+                            "row": 0,
+                            "col": 2
+                        }
+                    ],
+                    "seatsArr": [
+                        [0, 1, 1, 0],
+                        [1, 0, 0, 1],
+                        [0, 0, 1, 0]
+                        ],
+                    "numEmpty": 5
+                },
+                {
+                    "name": "table 2",
+                    "seats": [
+                        {
+                            "x": 669,
+                            "y": 98,
+                            "status": "filled",
+                            "row": 1,
+                            "col": 3
+                        },
+                        {
+                            "x": 756,
+                            "y": 174,
+                            "status": "filled",
+                            "row": 2,
+                            "col": 2
+                        },
+                        {
+                            "x": 756,
+                            "y": 244,
+                            "status": "filled",
+                            "row": 2,
+                            "col": 1
+                        },
+                        {
+                            "x": 669,
+                            "y": 334,
+                            "status": "filled",
+                            "row": 1,
+                            "col": 0
+                        },
+                        {
+                            "x": 582,
+                            "y": 243,
+                            "status": "filled",
+                            "row": 0,
+                            "col": 1
+                        },
+                        {
+                            "x": 582,
+                            "y": 173,
+                            "status": "filled",
+                            "row": 0,
+                            "col": 2
+                        }
+                    ],
+                    "seatsArr": [
+                        [0, 0, 0, 0],
+                        [0, 0, 0, 0],
+                        [0, 0, 0, 0]
+                        ],
+                    "numEmpty": 0
+                }
+            ]
+        }
+    ],
+    "totalCapacity": 24,
+    "empty": 11
+}

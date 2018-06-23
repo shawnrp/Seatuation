@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { Meteor } from 'meteor/meteor';
-import Seat from '../Seat.js';
+import Seat from '../../Seat.js';
 import uniqid from 'uniqid';
 
 export default class ChineseF1 extends Component{
@@ -33,9 +33,9 @@ export default class ChineseF1 extends Component{
     }
 
   	//convert SVG to JSX then insert below 
-	render(){
-		return(
-			<svg id='Layer_1' xmlns='http://www.w3.org/2000/svg'
+  	render(){
+  		return(
+  			<svg id='Layer_1' xmlns='http://www.w3.org/2000/svg'
   			viewBox='0 0 840 519'>
 	  			<g>
 		  			<rect id='room' fill='#FFF' stroke='#000' strokeMiterlimit='10' width='840'
@@ -60,6 +60,7 @@ export default class ChineseF1 extends Component{
 		  		</g>
   				{this.renderSeats()}
   			</svg>
-		)
-	}
-}
+  			)
+  	}
+  }
+

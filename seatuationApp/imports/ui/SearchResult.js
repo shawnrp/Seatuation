@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { Meteor } from 'meteor/meteor';
 import uniqid from 'uniqid';
-import ChineseF1 from './Chinese/ChineseF1';
-import ChineseF2 from './Chinese/ChineseF2';
+import ChineseF1 from './Libraries/Chinese/ChineseF1';
+import ChineseF2 from './Libraries/Chinese/ChineseF2';
 import './css/SearchResult.css';
 
 export default class SearchResult extends Component{

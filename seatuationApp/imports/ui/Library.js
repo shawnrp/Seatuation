@@ -3,8 +3,10 @@ import ReactDOM from 'react-dom';
 import { Meteor } from 'meteor/meteor';
 import { Libs } from '../api/libs.js';
 import './css/Library.css';
-import ChineseF1 from './Chinese/ChineseF1.js';
-import ChineseF2 from './Chinese/ChineseF2.js';
+import ChineseF1 from './Libraries/Chinese/ChineseF1.js';
+import ChineseF2 from './Libraries/Chinese/ChineseF2.js';
+import CentralF1 from './Libraries/Central/CentralF1.js';
+import CentralF2 from './Libraries/Central/CentralF2.js';
 import Sidebar from './Sidebar.js';
 
 export default class Library extends Component {
@@ -47,6 +49,9 @@ export default class Library extends Component {
 			case "Chinese Library":
 				return <ChineseF1 floor={this.props.lib.floors[0]} validTable=''/>;
 				break;
+			case "Central Library":
+				return <CentralF1 floor={this.props.lib.floors[0]} validTable=''/>;
+				break;
 		}
 
 	}
@@ -83,6 +88,8 @@ export default class Library extends Component {
 						{(!this.state.displaySearch && !this.state.firstLoad)?
 							(this.props.lib.name=="Chinese Library" && this.state.floor.name=="floor 1" && <ChineseF1 floor={this.props.lib.floors[0]} validTable=''/>)
 							|| (this.props.lib.name=="Chinese Library" && this.state.floor.name=="floor 2" && <ChineseF2 floor={this.props.lib.floors[1]} ValidTable=''/>)
+							|| (this.props.lib.name=="Central Library" && this.state.floor.name=="floor 1" && <CentralF1 floor={this.props.lib.floors[0]} validTable=''/>)
+							|| (this.props.lib.name=="Central Library" && this.state.floor.name=="floor 2" && <CentralF1 floor={this.props.lib.floors[1]} validTable=''/>)
 							: ''
 						}
 
@@ -90,6 +97,9 @@ export default class Library extends Component {
 						{this.state.displaySearch ?
 							(this.props.lib.name=="Chinese Library" && this.state.searchedFloor=="floor 1" && <ChineseF1 floor={this.props.lib.floors[0]} validTable={this.state.searchedTable}/>)
 							|| (this.props.lib.name=="Chinese Library" && this.state.searchedFloor=="floor 2" && <ChineseF2 floor={this.props.lib.floors[1]} validTable={this.state.searchedTable}/>)
+							|| (this.props.lib.name=="Central Library" && this.state.searchedFloor=="floor 1" && <CentralF1 floor={this.props.lib.floors[0]} validTable={this.state.searchedTable}/>)
+							|| (this.props.lib.name=="Central Library" && this.state.searchedFloor=="floor 2" && <CentralF1 floor={this.props.lib.floors[1]} validTable={this.state.searchedTable}/>)
+
 							: ''
 						}
 
