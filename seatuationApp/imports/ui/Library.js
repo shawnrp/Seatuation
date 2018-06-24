@@ -78,7 +78,7 @@ export default class Library extends Component {
 				        <span className="icon-bar"></span>
 				        <span className="icon-bar"></span>                        
 				      </button>
-				      <a className="libTitle navbar-brand" href="#">{this.props.lib.name}</a>
+				      <a className="libTitle navbar-brand">{this.props.lib.name}</a>
 				    </div>
 				    <div className="collapse navbar-collapse" id="myNavbar">
 				      <ul className="nav navbar-nav">
