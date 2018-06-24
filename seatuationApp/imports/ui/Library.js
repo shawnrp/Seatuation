@@ -69,7 +69,7 @@ export default class Library extends Component {
 
 	render(){
 		return(
-			<div className="mainLayout container">
+			<div className="mainLayout container-fluid">
 				<nav className="navbar navbar-inverse">
 				  <div className="container-fluid">
 				    <div className="navbar-header">
@@ -88,7 +88,7 @@ export default class Library extends Component {
 				  </div>
 				</nav>
 				
-				<div className="row">
+				
 					<div id="display" className="col-xs-8"> 
 						{/*if first time load AND not displaying search results*/}
 						{(this.state.firstLoad && !this.state.displaySearch)? this.renderFirstFloor() : ''/*show first floor always on first load*/}
@@ -117,7 +117,7 @@ export default class Library extends Component {
 						<Sidebar lib={this.props.lib} onSearch={this.processSearchResults.bind(this)}/>
 					</div>
 				</div>
-			</div>
+			
  		);
 	}
 }

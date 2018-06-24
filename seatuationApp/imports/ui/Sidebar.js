@@ -52,7 +52,7 @@ export default class Sidebar extends Component{
 
 	render(){
 		return (
-			<div className="container-fluid">
+			<div className="container-fluid sideBar">
 				{/* legend for the seat map*/}
 				<div className="legend box">
 					<h2 className="legendTitle">Legend</h2>
