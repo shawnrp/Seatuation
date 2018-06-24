@@ -108,7 +108,7 @@ class App extends Component {
 								<QrReader
 									delay={300}
 									onScan={this.handleScan}
-									style={{width: '350px'}}
+									style={{width: '25vw'}}
 									onError={this.handleError}
 									className="QRcam"
 								/>

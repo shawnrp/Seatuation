@@ -51,6 +51,8 @@
 	border: 1px;
 	border-style: solid;
 	border-color: black;
+	max-width: 100%;
+	font-size: 1vw;
 }
 
 .QRcam{
