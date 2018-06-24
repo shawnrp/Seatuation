@@ -23,8 +23,8 @@
 
 .mainLayout{
 	background-color: rgba(0,0,0,0.3);
-	padding-left: 0;
-	padding-right: 0;
+	padding-left: 15px;
+	padding-right: 15px;
 }
 
 #display{

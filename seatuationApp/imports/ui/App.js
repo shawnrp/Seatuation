@@ -100,7 +100,7 @@ class App extends Component {
 	render(){
 		return(
 			<div>
-				<div className="container" style={{paddingLeft: 0, paddingRight: 0}}>
+				<div className="topHalf container">
 					<button className="btn btn-primary QRbtn" onClick={this.showQR}>Help the community! Simply click to scan the QR code when you sit and once again when you leave!</button>
 					<div ref="QR">
 						{this.state.showQR?
@@ -108,7 +108,7 @@ class App extends Component {
 								<QrReader
 									delay={300}
 									onScan={this.handleScan}
-									style={{width: '350px'}}
+									style={{width: '30em'}}
 									onError={this.handleError}
 									className="QRcam"
 								/>

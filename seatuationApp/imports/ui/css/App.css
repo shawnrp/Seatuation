@@ -68,3 +68,9 @@
 	max-width: 100%;
 }
 
+.topHalf{
+	padding-left: 10px;
+    width: 100%;
+    padding-right: 10px;
+}
+
