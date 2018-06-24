@@ -3,7 +3,7 @@
 	height: auto;
 	border-radius: 5%;
 	cursor:pointer;
-	border: 3px;
+	border: 0.3vw;
 	border-style: solid;
 	border-color: black;
 }
@@ -14,6 +14,8 @@
 
 .libContainer {
 	margin-bottom: 10px;
+	padding-left: 5px;
+	padding-right: 5px;
 }
 
 .libContainer:hover{
@@ -31,11 +33,12 @@
     text-align: center;
     cursor: pointer;
     width: 80%;
+    max-width:80%
 }
 
 .selLib {
-	margin-bottom: 15px; 
-	margin-top: 10px;
+	margin-bottom: 1.5vw ;
+	margin-top: 1.5vw;
 	text-align: center;
 	font-size: 2vw;
 	color: black;
@@ -52,11 +55,16 @@
 	border-style: solid;
 	border-color: black;
 	max-width: 100%;
-	font-size: 1vw;
+	font-size: 1.5vw;
+	word-wrap: break-word;
 }
 
 .QRcam{
 	margin: 0 auto;
 	display: block;
+}
+
+.progBar{
+	max-width: 100%;
 }
 

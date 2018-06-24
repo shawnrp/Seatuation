@@ -38,8 +38,8 @@ export default class Library extends Component {
 		return floors.map((floor) => {
 			return (
 					<li key={name + floor.name}>
-						<a className="floorBtns" onClick={() => this.handleClick(floor)}>{floor.name}</a>
-					</li>			
+						<a className="floorBtns" onClick={() => this.handleClick(floor)}>{floor.name}</a>		
+					</li>	
 			);
 		})
 	}
@@ -70,15 +70,24 @@ export default class Library extends Component {
 	render(){
 		return(
 			<div className="mainLayout container">
-				<nav className = "navbar navbar-inverse">
-					<div className = "navbar-header">
-						<div className="libTitle navbar-brand">{this.props.lib.name}</div>
-					</div>
-					<ul className = "nav navbar-nav">
+				<nav className="navbar navbar-inverse">
+				  <div className="container-fluid">
+				    <div className="navbar-header">
+				      <button type="button" className="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+				        <span className="icon-bar"></span>
+				        <span className="icon-bar"></span>
+				        <span className="icon-bar"></span>                        
+				      </button>
+				      <a className="libTitle navbar-brand" href="#">{this.props.lib.name}</a>
+				    </div>
+				    <div className="collapse navbar-collapse" id="myNavbar">
+				      <ul className="nav navbar-nav">
 						{this.renderFloorButtons()}
-					</ul>
+				      </ul>
+				    </div>
+				  </div>
 				</nav>
-
+				
 				<div className="row">
 					<div id="display" className="col-xs-8"> 
 						{/*if first time load AND not displaying search results*/}

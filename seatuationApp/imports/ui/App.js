@@ -49,7 +49,7 @@ class App extends Component {
 					<div className="centered">
 					{lib.name}
 					<div className="occupancy">Occupancy({occupancy}%):</div>
-					<Line percent={occupancy} strokeWidth="5" trailWidth="5"/>
+					<Line className="progBar" percent={occupancy} strokeWidth="5" trailWidth="5"/>
 					</div>
 				</div>
 			);
@@ -100,7 +100,7 @@ class App extends Component {
 	render(){
 		return(
 			<div>
-				<div className="container">
+				<div className="container" style={{paddingLeft: 0, paddingRight: 0}}>
 					<button className="btn btn-primary QRbtn" onClick={this.showQR}>Help the community! Simply click to scan the QR code when you sit and once again when you leave!</button>
 					<div ref="QR">
 						{this.state.showQR?
@@ -118,7 +118,7 @@ class App extends Component {
 					<h2 className="selLib">Select a library below</h2>
 					{this.renderLibraryButtons()}
 				</div>
-				<div id="libTitle" className="row">
+				<div id="libTitle">
 					{this.state.showLibName ? 
 						<Library lib={this.getCorrectLibrary()}/> : ''
 					}

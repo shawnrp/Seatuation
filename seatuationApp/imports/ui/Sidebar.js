@@ -56,7 +56,7 @@ export default class Sidebar extends Component{
 				{/* legend for the seat map*/}
 				<div className="legend box">
 					<h2 className="legendTitle">Legend</h2>
-					<ul className="legendList">
+					<ul className="list-inline legendList">
 						<li>
 							<div className="inline taken"></div>
 							<span className="legendSub">Taken seat</span>
@@ -67,7 +67,7 @@ export default class Sidebar extends Component{
 						</li>
 						<li> 
 							<div className="inline tableMatch"></div> 
-							<span className="legendSub">Table that matches your search options</span> 
+							<span className="legendSub">Matching table</span> 
 						</li>
 					</ul>
 				</div>

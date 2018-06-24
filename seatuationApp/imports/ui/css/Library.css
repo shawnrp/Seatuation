@@ -1,5 +1,6 @@
 .floorBtns{
 	cursor: pointer;
+	display: inline-block;
 }
 
 .libName{
