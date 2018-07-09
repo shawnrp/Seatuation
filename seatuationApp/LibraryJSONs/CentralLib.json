@@ -3,6 +3,8 @@
         "$oid": "5b1f9bf4fb6fc033f88266da"
     },
     "name": "Central Library",
+    "latitude": 1.3621291,
+    "longitude": 103.96239200000002,
     "floors": [
         {
             "name": "floor 1",

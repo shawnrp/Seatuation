@@ -28,3 +28,4 @@ dburles:mongo-collection-instances
 react-meteor-data
 twbs:bootstrap
 force-ssl
+mdg:geolocation

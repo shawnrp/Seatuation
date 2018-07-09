@@ -1,6 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import { Mongo } from 'meteor/mongo';
 import { check } from 'meteor/check';
+import { Geolocation } from 'meteor/mdg:geolocation';
 
 export const Libs = new Mongo.Collection('libs')//collection of libraries
 
@@ -11,11 +12,21 @@ if (Meteor.isServer) {
   	});
  }
 
+function measure(lat1, lng1, lat2, lng2){  // generally used geo measurement function
+	var R = 6378.137; // Radius of earth in KM
+	var dLat = (lat2 - lat1) * Math.PI / 180;
+	var dLon = (lng2 - lng1) * Math.PI / 180;
+	var a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+		Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
+		Math.sin(dLon/2) * Math.sin(dLon/2);
+	var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+	var d = R * c;
+	return Math.round(d * 1000); // meters
+};
+
 Meteor.methods({
-	/*
-	'libs.fillSeat'(seatNum){ //seatNum will take format of e.g. Chinese Library.1.1.1, as chinese lib, floor1, table1, seat1
-		check(seatNum, String);
 
+	'libs.toggleSeat'(seatNum, currLat, currLng){
 		var details = seatNum.split('.');
 		var libName = details[0];
 		var floorNum = details[1]-1;
@@ -26,57 +37,11 @@ Meteor.methods({
 		var row = lib.floors[floorNum].tables[tableNum].seats[seatNum].row;
 		var col = lib.floors[floorNum].tables[tableNum].seats[seatNum].col;
 		var currStatus = lib.floors[floorNum].tables[tableNum].seats[seatNum].status;
-
-		if (currStatus == "empty"){
-			var updateSeatFilled = { "$set" : {}, "$inc": {} }
-				updateSeatFilled["$set"]["floors." + floorNum + ".tables."+ tableNum + ".seats." + seatNum + ".status"] = "filled";
-				updateSeatFilled["$set"]["floors." + floorNum + ".tables." + tableNum + ".seatsArr." + row + "." + col] = 0;
-				updateSeatFilled["$inc"]["floors." + floorNum + ".tables." + tableNum + ".numEmpty"] = -1;
-				updateSeatFilled["$inc"]["empty"] = -1;
-			Libs.update({"name": libName}, updateSeatFilled);
-		} else {
-			throw new Meteor.Error("Seat is already filled!");
+		var libLat = lib.latitude;
+		var libLng = lib.longitude; 
+		if (measure(currLat, currLng, libLat, libLng) >= 100){
+			return("invalid");
 		}
-	},
-
-	'libs.unfillSeat'(seatNum){ //seatNum will take format of e.g. Chinese Library.1.1.1, as chinese lib, floor1, table1, seat1
-		check(seatNum, String);
-
-		var details = seatNum.split('.');
-		var libName = details[0];
-		var floorNum = details[1]-1;
-		var tableNum = details[2]-1;
-		var seatNum = details[3]-1;
-
-		var lib = Libs.find({"name": libName}).fetch()[0];
-		var row = lib.floors[floorNum].tables[tableNum].seats[seatNum].row;
-		var col = lib.floors[floorNum].tables[tableNum].seats[seatNum].col;
-		var currStatus = lib.floors[floorNum].tables[tableNum].seats[seatNum].status;
-
-		if (currStatus == "filled"){
-			var updateSeatFilled = { "$set" : {}, "$inc": {} }
-				updateSeatFilled["$set"]["floors." + floorNum + ".tables."+ tableNum + ".seats." + seatNum + ".status"] = "empty";
-				updateSeatFilled["$set"]["floors." + floorNum + ".tables." + tableNum + ".seatsArr." + row + "." + col] = 1;
-				updateSeatFilled["$inc"]["floors." + floorNum + ".tables." + tableNum + ".numEmpty"] = 1;
-				updateSeatFilled["$inc"]["empty"] = 1;
-			Libs.update({"name": libName}, updateSeatFilled);
-		} else {
-			throw new Meteor.Error("Seat is already empty!");;
-		}
-	},*/
-
-	'libs.toggleSeat'(seatNum){
-		var details = seatNum.split('.');
-		var libName = details[0];
-		var floorNum = details[1]-1;
-		var tableNum = details[2]-1;
-		var seatNum = details[3]-1;
-
-		var lib = Libs.find({"name": libName}).fetch()[0];
-		var row = lib.floors[floorNum].tables[tableNum].seats[seatNum].row;
-		var col = lib.floors[floorNum].tables[tableNum].seats[seatNum].col;
-		var currStatus = lib.floors[floorNum].tables[tableNum].seats[seatNum].status;
-
 		if (currStatus == "empty"){
 			var updateSeatFilled = { "$set" : {}, "$inc": {} }
 				updateSeatFilled["$set"]["floors." + floorNum + ".tables."+ tableNum + ".seats." + seatNum + ".status"] = "filled";
