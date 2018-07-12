@@ -26,20 +26,21 @@ function measure(lat1, lng1, lat2, lng2){  // generally used geo measurement fun
 
 Meteor.methods({
 
-	'libs.toggleSeat'(seatNum, currLat, currLng){
-		var details = seatNum.split('.');
+	'libs.toggleSeat'(seatID, currLat, currLng){
+		var details = seatID.split('.');
 		var libName = details[0];
 		var floorNum = details[1]-1;
 		var tableNum = details[2]-1;
 		var seatNum = details[3]-1;
 
 		var lib = Libs.find({"name": libName}).fetch()[0];
+		if (lib == null) return;
 		var row = lib.floors[floorNum].tables[tableNum].seats[seatNum].row;
 		var col = lib.floors[floorNum].tables[tableNum].seats[seatNum].col;
 		var currStatus = lib.floors[floorNum].tables[tableNum].seats[seatNum].status;
 		var libLat = lib.latitude;
 		var libLng = lib.longitude; 
-		if (measure(currLat, currLng, libLat, libLng) >= 100){
+		if (measure(currLat, currLng, libLat, libLng) >= 100){ //check that user location is within 100M of library
 			return("invalid");
 		}
 		if (currStatus == "empty"){
