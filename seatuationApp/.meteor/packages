@@ -29,3 +29,4 @@ react-meteor-data
 twbs:bootstrap
 force-ssl
 mdg:geolocation
+kadira:flow-router

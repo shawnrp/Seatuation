@@ -16,8 +16,7 @@ class App extends Component {
 			libName: '', 
 			showLibName: false,
 			showQR: false,
-			data: '',
-			location: null
+			data: ''
 		} 
 
 		this.handleClick = this.handleClick.bind(this)
@@ -25,8 +24,6 @@ class App extends Component {
 		this.handleScan = this.handleScan.bind(this)
 		this.handleError = this.handleError.bind(this)
 		this.showQR = this.showQR.bind(this)
-		this.setLocation = this.setLocation.bind(this)
-		this.locationErr = this.locationErr.bind(this)
 	}
 
 	handleClick(lib){ //set lib to be the library document with name, floors, tables etc. 
@@ -74,7 +71,7 @@ class App extends Component {
 			this.setState({
 				showQR: false,
 			});
-			this.toggleSeat(data);
+			window.location.href= data; 
 		}
 	}
 
@@ -82,39 +79,8 @@ class App extends Component {
 		console.error(err);
 	}
 
-	toggleSeat(data){ //to handle scanning, data must be encoded in the form e.g. Chinese Library.1.1.1 i.e. library name.floorNum.tableNum.seatNum
-		var location = this.state.location;
-		var currLat = location.latitude;
-		var currLng = location.longitude
-		Meteor.call('libs.toggleSeat', data, currLat, currLng, function(err, result){
-			if(err) alert(err);
-			if (result == "userFilled"){
-				alert("Welcome! Thanks for marking your seat as filled! Please scan again when you leave!");
-			} else if (result =="userLeft"){
-				alert("Goodbye! Thanks for marking your seat as empty!");
-			} else if (result == "invalid"){
-				alert("Your current location is not in the library. Please refrain from abusing this service!");
-			}
-		})
-	}
-
-	setLocation(pos){
-		this.setState({
-			location: pos.coords
-		});
-	}
-
-	locationErr(err){
-		this.setState({
-			showQR: false
-		})
-
-		alert("Please allow location access to prevent system abuse!")
-	}
 
 	showQR(){ //handle click of QR code button
-
-		navigator.geolocation.getCurrentPosition(this.setLocation, this.locationErr);
 
 		this.setState({
 			showQR: !this.state.showQR,
