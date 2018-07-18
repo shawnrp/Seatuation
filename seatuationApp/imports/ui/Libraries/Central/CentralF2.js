@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { Meteor } from 'meteor/meteor';
-import Seat from '../../Seat.js';
+import SeatTest from '../../SeatTest.js';
 import uniqid from 'uniqid';
 
 export default class CentralF2 extends Component{
@@ -16,7 +16,7 @@ export default class CentralF2 extends Component{
 		for (var i = 0; i < tables.length; i++){ //loop through the tables on the floor
 			var seatsArr = tables[i].seats; //seats at each table 
 			seatsArr.map((seat) => { //for each seat, generate seat component
-				arr.push(<Seat key={uniqid()} cx={seat.x} cy={seat.y} seatStatus={seat.status}/>) //x and y values to be generated via svg first, then stored in database
+				arr.push(<SeatTest key={uniqid()} cx={seat.x} cy={seat.y} seatStatus={seat.status}/>) //x and y values to be generated via svg first, then stored in database
 			})
 		};
 		return arr.map((x) => {return x});		

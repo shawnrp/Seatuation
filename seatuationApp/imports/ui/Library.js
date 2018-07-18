@@ -8,6 +8,7 @@ import ChineseF2 from './Libraries/Chinese/ChineseF2.js';
 import CentralF1 from './Libraries/Central/CentralF1.js';
 import CentralF2 from './Libraries/Central/CentralF2.js';
 import MusicF1 from './Libraries/Music/MusicF1.js';
+import MusicF2 from './Libraries/Music/MusicF2.js';
 import Sidebar from './Sidebar.js';
 
 export default class Library extends Component {
@@ -104,6 +105,7 @@ export default class Library extends Component {
 							|| (this.props.lib.name=="Central Library" && this.state.floor.name=="floor 1" && <CentralF1 floor={this.props.lib.floors[0]} validTable=''/>)
 							|| (this.props.lib.name=="Central Library" && this.state.floor.name=="floor 2" && <CentralF2 floor={this.props.lib.floors[1]} validTable=''/>)
 							|| (this.props.lib.name=="Music Library" && this.state.floor.name=="floor 1" && <MusicF1 floor={this.props.lib.floors[0]} validTable=''/>)
+							|| (this.props.lib.name=="Music Library" && this.state.floor.name=="floor 2" && <MusicF2 floor={this.props.lib.floors[1]} validTable=''/>)
 							: ''
 						}
 
@@ -114,6 +116,7 @@ export default class Library extends Component {
 							|| (this.props.lib.name=="Central Library" && this.state.searchedFloor=="floor 1" && <CentralF1 floor={this.props.lib.floors[0]} validTable={this.state.searchedTable}/>)
 							|| (this.props.lib.name=="Central Library" && this.state.searchedFloor=="floor 2" && <CentralF2 floor={this.props.lib.floors[1]} validTable={this.state.searchedTable}/>)
 							|| (this.props.lib.name=="Music Library" && this.state.searchedFloor=="floor 1" && <MusicF1 floor={this.props.lib.floors[0]} validTable={this.state.searchedTable}/>)
+							|| (this.props.lib.name=="Music Library" && this.state.searchedFloor=="floor 2" && <MusicF2 floor={this.props.lib.floors[1]} validTable={this.state.searchedTable}/>)
 							: ''
 						}
 

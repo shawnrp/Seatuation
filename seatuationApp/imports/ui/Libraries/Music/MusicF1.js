@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { Meteor } from 'meteor/meteor';
-import SeatMusic from '../../SeatMusic.js';
+import SeatMusicF1 from './SeatMusicF1.js';
 import uniqid from 'uniqid';
 
 export default class ChineseF1 extends Component{
@@ -16,7 +16,7 @@ export default class ChineseF1 extends Component{
 		for (var i = 0; i < tables.length; i++){ //loop through the tables on the floor
 			var seatsArr = tables[i].seats; //seats at each table 
 			seatsArr.map((seat) => { //for each seat, generate seat component
-				arr.push(<SeatMusic key={uniqid()} cx={seat.x} cy={seat.y} seatStatus={seat.status}/>) //x and y values to be generated via svg first, then stored in database
+				arr.push(<SeatMusicF1 key={uniqid()} cx={seat.x} cy={seat.y} seatStatus={seat.status}/>) //x and y values to be generated via svg first, then stored in database
 			})
 		};
 		return arr.map((x) => {return x});		
@@ -35,6 +35,7 @@ export default class ChineseF1 extends Component{
   	//convert SVG to JSX then insert below ]
   	//ensure tables hv conditional fill based on validTable props
   	//ensure database has correct x and y coordinates for the seats
+  	//add database name and floor to Library.js
   	render(){
   		return(
 			<svg id="Layer_1" version="1.1" viewBox="0 0 840 472.5">
@@ -80,7 +81,7 @@ export default class ChineseF1 extends Component{
 				<line fill="none" stroke="#010101" strokeWidth="9" x1="643.007" x2="660.711" y1="139.981" y2="193.455"/>
 				<line fill="none" stroke="#010101" strokeWidth="9" x1="671.989" x2="689.693" y1="134.024" y2="187.498"/>
 				<line fill="none" stroke="#010101" strokeWidth="9" x1="698.047" x2="715.749" y1="125.855" y2="179.327"/>
-				<rect height="51.06" width="35.031" fill={this.props.validTable=='table 1'? '#fff196': '#FFF'} stroke="#010101" strokeWidth="3" x="467.949" y="246.587"/>
+				<rect id="table 1" height="51.06" width="35.031" fill={this.props.validTable=='table 1'? '#fff196': '#FFF'} stroke="#010101" strokeWidth="3" x="467.949" y="246.587"/>
 				<rect height="29.458" width="17.952" fill="none" x="475.878" y="258.486"/>
 				<text fontFamily="Segoe UI" fontSize="30.6351" transform="matrix(1.0291 0 0 1 476.7676 280.2373)">1</text>
 				<rect height="64.674" width="277.612" fill="none" x="493.83" y="362.729"/>
@@ -160,7 +161,7 @@ export default class ChineseF1 extends Component{
 				<text fill="#010101" fontFamily="Segoe UI" fontSize="11.9136" transform="matrix(1.0291 0 0 1 364.6582 448.1367)">Entrance</text>
 				<rect height="54.463" width="191.789" fill="none" x="7.731" y="24.671"/>
 				<text fill="#010101" fontFamily="Segoe UI" fontSize="40.8468" transform="matrix(1.0291 0 0 1 7.7314 53.6724)">LEVEL ONE</text>
-				<rect height="51.06" width="35.031" fill={this.props.validTable=='table 2'? '#fff196': '#FFF'} stroke="#010101" strokeWidth="3" x="587.381" y="246.587"/>
+				<rect id="table 2" height="51.06" width="35.031" fill={this.props.validTable=='table 2'? '#fff196': '#FFF'} stroke="#010101" strokeWidth="3" x="587.381" y="246.587"/>
 				<rect height="29.459" width="17.953" fill="none" x="595.309" y="258.486"/>
 				<text fontFamily="Segoe UI" fontSize="30.6351" transform="matrix(1.0291 0 0 1 596.1992 280.2383)">2</text>
 				{this.renderSeats()}
