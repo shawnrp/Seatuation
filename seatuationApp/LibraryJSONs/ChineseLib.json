@@ -3,6 +3,8 @@
         "$oid": "5b1fadd1fb6fc033f8827182"
     },
     "name": "Chinese Library",
+    "latitude": 1.3621291,
+    "longitude": 103.96239200000002,
     "floors": [
         {
             "name": "floor 1",

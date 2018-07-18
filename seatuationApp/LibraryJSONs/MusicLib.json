@@ -3,6 +3,8 @@
         "$oid": "5b1ff874fb6fc033f882bdcc"
     },
     "name": "Music Library",
+    "latitude": 1.302418,
+    "longitude": 103.772537,
     "floors": [
         {
             "name": "floor 1",

@@ -40,8 +40,6 @@ export default class ChineseF1 extends Component{
   		return(
 			<svg id="Layer_1" version="1.1" viewBox="0 0 840 472.5">
 				<rect id='room' fill='#FFF' stroke='#000' strokeMiterlimit='10' width='840' height='472.5' />
-				<line fill="none" stroke="#808285" x1="490.045" x2="490.045" y1="319.147" y2="352.197"/>
-				<line fill="none" stroke="#808285" x1="473.25" x2="506.732" y1="335.467" y2="335.467"/>
 				<line fill="#5E5E5E" stroke="#010101" strokeWidth="5" x1="8.542" x2="829.995" y1="236.563" y2="22.563"/>
 				<line fill="#5E5E5E" stroke="#010101" strokeWidth="5" x1="8.542" x2="8.542" y1="235.934" y2="340.604"/>
 				<line fill="#5E5E5E" stroke="#010101" strokeWidth="5" x1="8.542" x2="38.317" y1="339.716" y2="448.716"/>
@@ -84,6 +82,8 @@ export default class ChineseF1 extends Component{
 				<rect height="24.679" width="28.575" fill="none" x="418.009" y="170.409"/>
 				<text fill="#010101" fontFamily="Segoe UI" fontSize="11.9136" transform="matrix(1.0291 0 0 1 418.0088 179.228)">LINC</text>
 				<ellipse id="table 9" cx="490.044" cy="335.467" fill={this.props.validTable=='table 9'? '#fff196': 'none'} rx="18.215" ry="17.73" stroke="#000000" strokeWidth="3"/>
+				<line fill="none" stroke="#808285" x1="490.045" x2="490.045" y1="319.147" y2="352.197"/>
+				<line fill="none" stroke="#808285" x1="473.25" x2="506.732" y1="335.467" y2="335.467"/>
 				<rect height="24.678" width="38.258" fill="none" x="17.027" y="326.233"/>
 				<text fill="#010101" fontFamily="Segoe UI" fontSize="11.9136" transform="matrix(1.0291 0 0 1 17.0273 335.0527)">Stairs</text>
 				<rect height="54.463" width="216.807" fill="none" x="6.731" y="24.671"/>
@@ -190,10 +190,10 @@ export default class ChineseF1 extends Component{
 				<rect height="24.679" width="28.575" fill="none" x="802.761" y="379.811"/>
 				<text fill="#010101" fontFamily="Segoe UI" fontSize="11.9136" transform="matrix(1.0291 0 0 1 802.7607 388.6289)">Lift</text>
 				<rect height="23.566" width="14.362" fill="none" x="482.864" y="324.684"/>
+				<ellipse id="table 10" cx="481.75" cy="266.414" fill={this.props.validTable=='table 10'? '#fff196': 'none'} rx="18.215" ry="17.73" stroke="#000000" strokeWidth="3"/>
 				<text fontFamily="Segoe UI" fontSize="24.5081" transform="matrix(1.0291 0 0 1 483.248 342.8252)">9</text>
 				<line fill="none" stroke="#808285" x1="481.75" x2="481.75" y1="250.095" y2="283.145"/>
 				<line fill="none" stroke="#808285" x1="464.955" x2="498.438" y1="266.414" y2="266.414"/>
-				<ellipse id="table 10" cx="481.75" cy="266.414" fill={this.props.validTable=='table 10'? '#fff196': 'none'} rx="18.215" ry="17.73" stroke="#000000" strokeWidth="3"/>
 				<rect height="23.566" width="28.892" fill="none" x="466.864" y="256.631"/>
 				<text fontFamily="Segoe UI" fontSize="24.5081" transform="matrix(1.0291 0 0 1 467.7139 274.7725)">10</text>
 				{this.renderSeats()}
