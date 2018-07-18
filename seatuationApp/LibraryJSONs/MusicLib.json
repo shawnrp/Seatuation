@@ -1,0 +1,93 @@
+{
+    "_id": {
+        "$oid": "5b1ff874fb6fc033f882bdcc"
+    },
+    "name": "Music Library",
+    "floors": [
+        {
+            "name": "floor 1",
+            "tables": [
+                {
+                    "name": "table 1",
+                    "seats": [
+                       {
+                            "x": 436.854,
+                            "y": 245.507,
+                            "status": "empty",
+                            "row": 2,
+                            "col": 0
+                       },
+                       {
+                            "x": 436.854,
+                            "y": 276.944,
+                            "status": "empty",
+                            "row": 2,
+                            "col": 1
+                       },
+                       {
+                            "x": 512.483,
+                            "y": 276.944,
+                            "status": "empty",
+                            "row": 0,
+                            "col": 1
+                       },
+                       {
+                            "x": 512.483,
+                            "y": 245.507,
+                            "status": "empty",
+                            "row": 0,
+                            "col": 0
+                       }
+                    ],
+                    "seatsArr": [
+                        [1, 1],
+                        [0, 0],
+                        [1, 1]
+                    ],
+                    "numEmpty": 4
+                },
+                {
+                    "name": "table 2",
+                    "seats": [
+                       {
+                            "x": 556.285,
+                            "y": 245.507,
+                            "status": "empty",
+                            "row": 2,
+                            "col": 0
+                       },
+                       {
+                            "x": 556.285,
+                            "y": 276.944,
+                            "status": "empty",
+                            "row": 2,
+                            "col": 1
+                       },
+                       {
+                            "x": 631.914,
+                            "y": 276.944,
+                            "status": "empty",
+                            "row": 0,
+                            "col": 1
+                       },
+                       {
+                            "x": 631.914,
+                            "y": 245.507,
+                            "status": "empty",
+                            "row": 0,
+                            "col": 0
+                       }
+                    ],
+                    "seatsArr": [
+                        [1, 1],
+                        [0, 0],
+                        [1, 1]
+                    ],
+                    "numEmpty": 4
+                }
+            ]
+        }
+    ],
+    "totalCapacity": 8,
+    "empty": 8
+}

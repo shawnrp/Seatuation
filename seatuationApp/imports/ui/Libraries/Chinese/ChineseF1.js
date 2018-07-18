@@ -32,7 +32,9 @@ export default class ChineseF1 extends Component{
     	element.scrollIntoView({behaviour: 'smooth'});
     }
 
-  	//convert SVG to JSX then insert below 
+  	//convert SVG to JSX then insert below ]
+  	//ensure tables hv conditional fill based on validTable props
+  	//ensure database has correct x and y coordinates for the seats
   	render(){
   		return(
   			<svg id='Layer_1' xmlns='http://www.w3.org/2000/svg'

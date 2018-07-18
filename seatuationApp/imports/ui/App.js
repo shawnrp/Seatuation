@@ -51,7 +51,7 @@ class App extends Component {
 					alt="Lib"/>
 					<div className="centered">
 					{lib.name}
-					<div className="occupancy">Occupancy({occupancy}%):</div>
+					<div className="occupancy">Occupancy ({occupancy}%):</div>
 					<Line className="progBar" percent={occupancy} strokeWidth="5" trailWidth="5"/>
 					</div>
 				</div>
