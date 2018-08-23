@@ -27,6 +27,6 @@ accounts-password@1.5.1
 dburles:mongo-collection-instances
 react-meteor-data
 twbs:bootstrap
-force-ssl
+force-ssl@1.1.0
 mdg:geolocation
 kadira:flow-router
